@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root{
+    --white: #ffffff;
+    --royal-blue: #5546ff;
+
+}
