@@ -41,7 +41,7 @@ const UserRequestPreview: React.FC = () => {
             <h2>{currentUser?.name}'s Requests</h2>
             <div className={styles.requests}>
                 {userDeliveries.length === 0 && userOrders.length === 0 ? (
-                    <p>Currently you didn't add any requests...</p>
+                    <p>Currently, you didn't create any request.</p>
                 ) : (
                     <>
                         {userDeliveries.map((delivery) => (
@@ -51,6 +51,7 @@ const UserRequestPreview: React.FC = () => {
                                 fromCity={delivery.fromCity}
                                 toCity={delivery.toCity}
                                 dispatchDate={delivery.dispatchDate}
+                                allowEditing={true}
                                 onEdit={(updatedData) => handleEditDelivery(delivery.id, updatedData)}
                                 onDelete={() => handleDeleteDelivery(delivery.id)}
                             />
