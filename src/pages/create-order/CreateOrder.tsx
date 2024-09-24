@@ -1,10 +1,10 @@
 import React from 'react';
+import DashboardLayout from "../../components/dashboard-layout/DashboardLayout";
 
 const CreateOrder: React.FC = () => {
     return (
-        <div>
-
-        </div>
+        <DashboardLayout title="Create Order">
+        </DashboardLayout>
     );
 };
 

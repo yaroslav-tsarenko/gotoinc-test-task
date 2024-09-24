@@ -1,10 +1,10 @@
 import React from 'react';
+import DashboardLayout from "../../components/dashboard-layout/DashboardLayout";
 
 const UserRequest: React.FC = () => {
     return (
-        <div>
-
-        </div>
+        <DashboardLayout title="Your Requests">
+        </DashboardLayout>
     );
 };
 
