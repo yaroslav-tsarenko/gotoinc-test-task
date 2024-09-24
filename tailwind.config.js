@@ -1,9 +1,14 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [],
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./public/index.html",
+  ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'coral-diamond': 'rgba(159,228,205,0.52)', // Add your custom color here
+      },
+    },
   },
   plugins: [],
 }
-
