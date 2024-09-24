@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { useAllRequestStore } from './allRequestsStore';
 
 interface Delivery {
     id: string;
@@ -20,7 +21,10 @@ export const useDeliveryStore = create<DeliveryStore>()(
     persist(
         (set) => ({
             deliveries: [],
-            addDelivery: (delivery) => set((state) => ({ deliveries: [...state.deliveries, delivery] })),
+            addDelivery: (delivery) => {
+                set((state) => ({ deliveries: [...state.deliveries, delivery] }));
+                useAllRequestStore.getState().addDelivery(delivery);
+            },
             updateDelivery: (id, updatedData) => set((state) => ({
                 deliveries: state.deliveries.map((delivery) => (delivery.id === id ? { ...delivery, ...updatedData } : delivery)),
             })),

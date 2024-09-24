@@ -26,6 +26,7 @@
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 1111;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
@@ -38,6 +39,10 @@
   border-radius: 8px;
   max-width: 500px;
   width: 100%;
+}
+
+.matchMessage{
+    margin-bottom: 1rem;
 }
 
 .inputGroup {
