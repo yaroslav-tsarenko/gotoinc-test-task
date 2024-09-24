@@ -1,0 +1,26 @@
+.allRequestsPreview {
+  padding: 1rem;
+  background-color: var(--light-diamond);
+  border-radius: 8px;
+
+  h2 {
+    margin-bottom: 1rem;
+    font-weight: bold;
+    color: var(--royal-blue-hovered);
+  }
+
+  .sortOptions {
+    margin-bottom: 1rem;
+    gap: 10px;
+
+    label {
+      margin-right: 0.5rem;
+    }
+
+    select {
+      padding: 0.25rem;
+      border-radius: 4px;
+      border: 1px solid var(--royal-blue-hovered);
+    }
+  }
+}

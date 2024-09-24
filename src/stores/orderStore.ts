@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { useAllRequestStore } from './allRequestsStore';
 
 interface Order {
     id: string;
@@ -22,7 +23,10 @@ export const useOrderStore = create<OrderStore>()(
     persist(
         (set) => ({
             orders: [],
-            addOrder: (order) => set((state) => ({ orders: [...state.orders, order] })),
+            addOrder: (order) => {
+                set((state) => ({ orders: [...state.orders, order] }));
+                useAllRequestStore.getState().addOrder(order);
+            },
             updateOrder: (id, updatedData) => set((state) => ({
                 orders: state.orders.map((order) => (order.id === id ? { ...order, ...updatedData } : order)),
             })),
@@ -31,7 +35,7 @@ export const useOrderStore = create<OrderStore>()(
             })),
         }),
         {
-            name: 'order-storage',
+            name: 'order-storage', // unique name for the storage
         }
     )
 );

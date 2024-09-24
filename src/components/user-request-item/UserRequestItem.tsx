@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styles from './UserRequestItem.module.scss';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaInfo } from 'react-icons/fa';
+import { useAllRequestStore } from '../../stores/allRequestsStore';
+import { useAuthStore } from '../../stores/authStore';
 
 interface UserRequestItemProps {
     type: 'Order' | 'Delivery';
@@ -16,7 +18,12 @@ interface UserRequestItemProps {
 
 const UserRequestItem: React.FC<UserRequestItemProps> = ({ type, fromCity, toCity, dispatchDate, parcelType, description, allowEditing = false, onDelete, onEdit }) => {
     const [isEditing, setIsEditing] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [formData, setFormData] = useState({ fromCity, toCity, dispatchDate, parcelType, description });
+
+    const allDeliveries = useAllRequestStore((state) => state.deliveries);
+    const allOrders = useAllRequestStore((state) => state.orders);
+    const users = useAuthStore((state) => state.users);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         setFormData({
@@ -33,6 +40,22 @@ const UserRequestItem: React.FC<UserRequestItemProps> = ({ type, fromCity, toCit
         setIsEditing(false);
     };
 
+    const findMatchingRequests = () => {
+        const allRequests = [...allDeliveries, ...allOrders];
+        return allRequests
+            .filter(request =>
+                request.fromCity === fromCity &&
+                request.toCity === toCity &&
+                new Date(request.dispatchDate).toDateString() === new Date(dispatchDate).toDateString()
+            )
+            .map(request => ({
+                ...request,
+                userName: users.find(user => user.id === request.userId)?.name || 'Unknown'
+            }));
+    };
+
+    const matchingRequests = findMatchingRequests();
+
     return (
         <div className={styles.requestItem}>
             <p><strong>Type:</strong> {type}</p>
@@ -45,6 +68,7 @@ const UserRequestItem: React.FC<UserRequestItemProps> = ({ type, fromCity, toCit
                 <div className={styles.actions}>
                     <FaEdit onClick={() => setIsEditing(true)} />
                     <FaTrash onClick={onDelete} />
+                    <FaInfo onClick={() => setIsModalOpen(true)}/>
                 </div>
             )}
             {isEditing && (
@@ -122,10 +146,28 @@ const UserRequestItem: React.FC<UserRequestItemProps> = ({ type, fromCity, toCit
                     </div>
                 </div>
             )}
+            {isModalOpen && (
+                <div className={styles.modal}>
+                    <div className={styles.modalContent}>
+                        <h2>Matching Requests</h2>
+                        {matchingRequests.length > 0 ? (
+                            matchingRequests.map((request, index) => (
+                                <div key={index} className={styles.requestItem}>
+                                    <p><strong>From:</strong> {request.fromCity}</p>
+                                    <p><strong>To:</strong> {request.toCity}</p>
+                                    <p><strong>Date:</strong> {request.dispatchDate}</p>
+                                    <p><strong>User:</strong> {request.userName}</p>
+                                </div>
+                            ))
+                        ) : (
+                            <p className={styles.matchMessage}>No matching requests found.</p>
+                        )}
+                        <button className={styles.button} onClick={() => setIsModalOpen(false)}>Close</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
 
 export default UserRequestItem;
-
-export {};

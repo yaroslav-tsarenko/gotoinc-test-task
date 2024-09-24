@@ -8,6 +8,7 @@ import AllRequests from "./pages/all-requests/AllRequests";
 import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
 import CreateRequest from "./pages/create-request/CreateRequest";
+import AllRequestsDemo from "./pages/all-requests-demo/AllRequestsDemo";
 
 const App: React.FC = () => {
     return (
@@ -19,6 +20,7 @@ const App: React.FC = () => {
                 <Route path="/:id/create/deliver" element={<CreateDelivery />} />
                 <Route path="/:id/requests" element={<UserRequest />} />
                 <Route path="/:id/all-requests" element={<AllRequests />} />
+                <Route path="/all-requests" element={<AllRequestsDemo/>} />
                 <Route path="/" element={<Register />} />
                 <Route path="/login" element={<Login />} />
             </Routes>
