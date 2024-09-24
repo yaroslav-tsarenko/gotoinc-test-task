@@ -1,26 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from "./pages/home/Home";
+import CreateOrder from "./pages/create-order/CreateOrder";
+import CreateDelivery from "./pages/create-delivery/CreateDelivery";
+import UserRequest from "./pages/user-request/UserRequest";
+import AllRequests from "./pages/all-requests/AllRequests";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App: React.FC = () => {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/:id/create/order" element={<CreateOrder />} />
+                <Route path="/:id/create/deliver" element={<CreateDelivery />} />
+                <Route path="/:id/requests" element={<UserRequest />} />
+                <Route path="/all-requests" element={<AllRequests />} />
+            </Routes>
+        </Router>
+    );
+};
 
 export default App;
