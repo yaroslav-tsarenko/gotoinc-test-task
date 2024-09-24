@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useOrderStore } from '../../stores/orderStore';
 import styles from './OrderForm.module.scss';
+import { generateId } from '../../utils/generateId';
 
 const OrderForm: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -11,7 +12,7 @@ const OrderForm: React.FC = () => {
     const [formData, setFormData] = useState({
         fromCity: '',
         toCity: '',
-        parcelType: 'gadgets',
+        parcelType: '',
         dispatchDate: '',
         description: '',
     });
@@ -26,7 +27,8 @@ const OrderForm: React.FC = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (id) {
-            addOrder({ ...formData, userId: id });
+            const newOrder = { id: generateId(), ...formData, userId: id };
+            addOrder(newOrder);
             window.alert('Order created successfully');
             setTimeout(() => {
                 navigate(`/${id}/requests`);
@@ -100,7 +102,10 @@ const OrderForm: React.FC = () => {
                     onChange={handleChange}
                 />
             </div>
-            <button className={styles.button} type="submit">Submit</button>
+            <div className={styles.buttonNav}>
+                {id && <Link to={`/${id}/create`} className={styles.button}>Go Back</Link>}
+                <button className={styles.button} type="submit">Submit</button>
+            </div>
         </form>
     );
 };

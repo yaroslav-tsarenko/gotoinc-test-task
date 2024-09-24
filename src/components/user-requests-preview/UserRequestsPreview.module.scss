@@ -1,0 +1,18 @@
+.requestPreview {
+  padding: 2rem;
+  background-color: var(--light-diamond);
+  border-radius: 8px;
+
+  h2{
+    margin: 0 0 15px 0;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--royal-blue-hovered);
+  }
+}
+
+.requests {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

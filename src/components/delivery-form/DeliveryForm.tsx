@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDeliveryStore } from '../../stores/deliveryStore';
 import styles from './DeliveryForm.module.scss';
+import { generateId } from '../../utils/generateId';
 
 const DeliveryForm: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -24,11 +25,12 @@ const DeliveryForm: React.FC = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (id) {
-            addDelivery({ ...formData, userId: id });
+            const newDelivery = { id: generateId(), ...formData, userId: id };
+            addDelivery(newDelivery);
             window.alert('Delivery created successfully');
             setTimeout(() => {
                 navigate(`/${id}/requests`);
-            }, 1000)
+            }, 1000);
         } else {
             console.error('User ID is undefined');
             window.alert('Error creating delivery');
