@@ -7,12 +7,14 @@ import UserRequest from "./pages/user-request/UserRequest";
 import AllRequests from "./pages/all-requests/AllRequests";
 import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
+import CreateRequest from "./pages/create-request/CreateRequest";
 
 const App: React.FC = () => {
     return (
         <Router>
             <Routes>
                 <Route path="/:id/home" element={<Home />} />
+                <Route path="/:id/create" element={<CreateRequest />} />
                 <Route path="/:id/create/order" element={<CreateOrder />} />
                 <Route path="/:id/create/deliver" element={<CreateDelivery />} />
                 <Route path="/:id/requests" element={<UserRequest />} />

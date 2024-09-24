@@ -24,11 +24,8 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({children, title}) => {
         <div className={styles.dashboard}>
             <aside className={styles.sidebar}>
                 <h2>{title}</h2>
-                <button onClick={() => navigate(`/${currentUser?.id}/create/order`)}>
-                    <FaBox /> Create Order
-                </button>
-                <button onClick={() => navigate(`/${currentUser?.id}/create/deliver`)}>
-                    <FaTruck /> Create Delivery
+                <button onClick={() => navigate(`/${currentUser?.id}/create`)}>
+                    <FaBox /> Create Request
                 </button>
                 <button onClick={() => navigate(`/${currentUser?.id}/requests`)}>
                     <FaClipboardList /> User Requests
