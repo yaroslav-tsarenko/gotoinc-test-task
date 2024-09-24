@@ -28,7 +28,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({children, title}) => {
                     <FaBox /> Create Request
                 </button>
                 <button onClick={() => navigate(`/${currentUser?.id}/requests`)}>
-                    <FaClipboardList /> User Requests
+                    <FaClipboardList /> My Requests
                 </button>
                 <button onClick={() => navigate(`/${currentUser?.id}/all-requests`)}>
                     <FaListAlt /> All Requests

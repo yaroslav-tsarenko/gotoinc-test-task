@@ -56,6 +56,11 @@
   }
 }
 
+.buttonNav{
+    display: flex;
+    gap: 10px;
+}
+
 .button:hover {
   background-color: var(--royal-blue-hovered);
 }
