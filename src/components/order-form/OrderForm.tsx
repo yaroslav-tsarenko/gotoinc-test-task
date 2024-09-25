@@ -40,8 +40,8 @@ const OrderForm: React.FC = () => {
     };
 
     return (
-        <form className={styles.orderForm} onSubmit={handleSubmit}>
-            <div className={styles.inputGroup}>
+        <form className={styles.orderForm} onSubmit={handleSubmit} data-testid="order-form">
+            <div className={styles.inputGroup} data-testid="input-group-from-city">
                 <label className={styles.label} htmlFor="fromCity">From City</label>
                 <input
                     className={styles.input}
@@ -53,7 +53,7 @@ const OrderForm: React.FC = () => {
                     required
                 />
             </div>
-            <div className={styles.inputGroup}>
+            <div className={styles.inputGroup} data-testid="input-group-to-city">
                 <label className={styles.label} htmlFor="toCity">To City</label>
                 <input
                     className={styles.input}
@@ -65,7 +65,7 @@ const OrderForm: React.FC = () => {
                     required
                 />
             </div>
-            <div className={styles.inputGroup}>
+            <div className={styles.inputGroup} data-testid="input-group-parcel-type">
                 <label className={styles.label} htmlFor="parcelType">Type of Parcel</label>
                 <select
                     className={styles.select}
@@ -81,7 +81,7 @@ const OrderForm: React.FC = () => {
                     <option value="other">Other</option>
                 </select>
             </div>
-            <div className={styles.inputGroup}>
+            <div className={styles.inputGroup} data-testid="input-group-dispatch-date">
                 <label className={styles.label} htmlFor="dispatchDate">Dispatch Date</label>
                 <input
                     className={styles.input}
@@ -92,7 +92,7 @@ const OrderForm: React.FC = () => {
                     onChange={handleChange}
                 />
             </div>
-            <div className={styles.inputGroup}>
+            <div className={styles.inputGroup} data-testid="input-group-description">
                 <label className={styles.label} htmlFor="description">Parcel Description</label>
                 <textarea
                     className={styles.textarea}
@@ -102,7 +102,7 @@ const OrderForm: React.FC = () => {
                     onChange={handleChange}
                 />
             </div>
-            <div className={styles.buttonNav}>
+            <div className={styles.buttonNav} data-testid="button-nav">
                 {id && <Link to={`/${id}/create`} className={styles.button}>Go Back</Link>}
                 <button className={styles.button} type="submit">Submit</button>
             </div>

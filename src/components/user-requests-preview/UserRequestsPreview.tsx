@@ -37,9 +37,9 @@ const UserRequestPreview: React.FC = () => {
     };
 
     return (
-        <div className={styles.requestPreview}>
-            <h2>{currentUser?.name}'s Requests</h2>
-            <div className={styles.requests}>
+        <div className={styles.requestPreview} data-testid="all-requests">
+            <h2 data-testid="title">{currentUser?.name}'s Requests</h2>
+            <div className={styles.requests} data-testid="users-requests">
                 {userDeliveries.length === 0 && userOrders.length === 0 ? (
                     <p>Currently, you didn't create any request.</p>
                 ) : (

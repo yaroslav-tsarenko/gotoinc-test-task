@@ -38,8 +38,8 @@ const DeliveryForm: React.FC = () => {
     };
 
     return (
-        <form className={styles.deliveryForm} onSubmit={handleSubmit}>
-            <div className={styles.inputGroup}>
+        <form className={styles.deliveryForm} onSubmit={handleSubmit} data-testid="delivery-form">
+            <div className={styles.inputGroup} data-testid="input-group-from-city">
                 <label className={styles.label} htmlFor="fromCity">From City</label>
                 <input
                     className={styles.input}
@@ -51,7 +51,7 @@ const DeliveryForm: React.FC = () => {
                     required
                 />
             </div>
-            <div className={styles.inputGroup}>
+            <div className={styles.inputGroup} data-testid="input-group-to-city">
                 <label className={styles.label} htmlFor="toCity">To City</label>
                 <input
                     className={styles.input}
@@ -63,7 +63,7 @@ const DeliveryForm: React.FC = () => {
                     required
                 />
             </div>
-            <div className={styles.inputGroup}>
+            <div className={styles.inputGroup} data-testid="input-group-dispatch-date">
                 <label className={styles.label} htmlFor="dispatchDate">Dispatch Date</label>
                 <input
                     className={styles.input}
@@ -74,7 +74,7 @@ const DeliveryForm: React.FC = () => {
                     onChange={handleChange}
                 />
             </div>
-            <div className={styles.buttonNav}>
+            <div className={styles.buttonNav} data-testid="button-nav">
                 {id && <Link to={`/${id}/create`} className={styles.button}>Go Back</Link>}
                 <button className={styles.button} type="submit">Submit</button>
             </div>

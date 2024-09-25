@@ -18,9 +18,9 @@ const AllRequestsPreview: React.FC = () => {
     });
 
     return (
-        <div className={styles.allRequestsPreview}>
-            <h2>All Requests</h2>
-            <div className={styles.sortOptions}>
+        <div className={styles.allRequestsPreview} data-testid="all-requests">
+            <h2 data-testid="title">All Requests</h2>
+            <div className={styles.sortOptions} data-testid="sort-options">
                 <label>
                     Sort by:
                     <select value={sortCriteria} onChange={(e) => setSortCriteria(e.target.value as 'creationDate' | 'dispatchDate')}>

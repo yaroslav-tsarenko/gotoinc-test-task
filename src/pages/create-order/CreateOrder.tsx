@@ -5,7 +5,9 @@ import OrderForm from "../../components/order-form/OrderForm";
 const CreateOrder: React.FC = () => {
     return (
         <DashboardLayout title="Create Order">
-            <OrderForm/>
+            <div data-testid="create-order-page">
+                <OrderForm/>
+            </div>
         </DashboardLayout>
     );
 };
