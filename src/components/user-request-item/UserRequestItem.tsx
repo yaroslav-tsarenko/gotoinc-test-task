@@ -57,7 +57,7 @@ const UserRequestItem: React.FC<UserRequestItemProps> = ({ type, fromCity, toCit
     const matchingRequests = findMatchingRequests();
 
     return (
-        <div className={styles.requestItem}>
+        <div className={styles.requestItem} data-testid="user-item">
             <p><strong>Type:</strong> {type}</p>
             <p><strong>From:</strong> {fromCity}</p>
             <p><strong>To:</strong> {toCity}</p>
@@ -72,7 +72,7 @@ const UserRequestItem: React.FC<UserRequestItemProps> = ({ type, fromCity, toCit
                 </div>
             )}
             {isEditing && (
-                <div className={styles.modal}>
+                <div className={styles.modal} data-testid="editing-modal">
                     <div className={styles.modalContent}>
                         <form onSubmit={handleSubmit}>
                             <div className={styles.inputGroup}>
@@ -147,7 +147,7 @@ const UserRequestItem: React.FC<UserRequestItemProps> = ({ type, fromCity, toCit
                 </div>
             )}
             {isModalOpen && (
-                <div className={styles.modal}>
+                <div className={styles.modal} data-testid="matching-request-modal">
                     <div className={styles.modalContent}>
                         <h2>Matching Requests</h2>
                         {matchingRequests.length > 0 ? (

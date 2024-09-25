@@ -5,7 +5,9 @@ import DeliveryForm from "../../components/delivery-form/DeliveryForm";
 const CreateDelivery: React.FC = () => {
     return (
         <DashboardLayout title="Create Delivery">
-            <DeliveryForm/>
+            <div data-testid="create-delivery-page">
+                <DeliveryForm/>
+            </div>
         </DashboardLayout>
     );
 };

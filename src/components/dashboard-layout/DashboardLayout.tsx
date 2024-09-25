@@ -1,43 +1,35 @@
 import React from 'react';
 import { useAuthStore } from '../../stores/authStore';
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import styles from './DashboardLayout.module.scss';
-import { FaBox, FaTruck, FaClipboardList, FaListAlt, FaSignOutAlt } from 'react-icons/fa';
+import { FaBox, FaClipboardList, FaListAlt, FaSignOutAlt } from 'react-icons/fa';
 
 interface DashboardLayoutProps {
     children?: React.ReactNode;
-    title: string;
+    title?: string;
 }
 
-
-const DashboardLayout: React.FC<DashboardLayoutProps> = ({children, title}) => {
+const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, title }) => {
     const currentUser = useAuthStore((state) => state.currentUser);
-    const logout = useAuthStore((state) => state.logout);
-    const navigate = useNavigate();
-
-    const handleLogout = () => {
-        logout();
-        navigate('/login');
-    };
 
     return (
-        <div className={styles.dashboard}>
-            <aside className={styles.sidebar}>
-                <h2>{title}</h2>
-                <button onClick={() => navigate(`/${currentUser?.id}/create`)}>
+        <div className={styles.dashboard} data-testid="dashboard">
+            <aside className={styles.sidebar} data-testid="sidebar">
+                <h2 data-testid="title">{title}</h2>
+                <Link className={styles.button} to={`/${currentUser?.id}/create`} >
                     <FaBox /> Create Request
-                </button>
-                <button onClick={() => navigate(`/${currentUser?.id}/requests`)}>
+                </Link>
+                <Link className={styles.button} to={`/${currentUser?.id}/requests`}>
                     <FaClipboardList /> My Requests
-                </button>
-                <button onClick={() => navigate(`/${currentUser?.id}/all-requests`)}>
+                </Link>
+                <Link className={styles.button} to={`/${currentUser?.id}/all-requests`}>
                     <FaListAlt /> All Requests
-                </button>
-                <button onClick={handleLogout}>
+                </Link>
+                <Link className={styles.button} to="/login" data-testid="logout-button">
                     <FaSignOutAlt /> Logout
-                </button>
+                </Link>
             </aside>
-            <main className={styles.main}>
+            <main className={styles.main} data-testid="main">
                 {children}
             </main>
         </div>

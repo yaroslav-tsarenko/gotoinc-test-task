@@ -5,7 +5,9 @@ import AllRequestsPreview from '../../components/all-requests-preview/AllRequest
 const AllRequests: React.FC = () => {
     return (
         <DashboardLayout title="All Requests">
-            <AllRequestsPreview />
+            <div data-testid="all-requests-page">
+                <AllRequestsPreview />
+            </div>
         </DashboardLayout>
     );
 };

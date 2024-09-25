@@ -17,7 +17,7 @@ const RegistrationForm: React.FC = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className={styles.form}>
+        <form onSubmit={handleSubmit} className={styles.form} data-testid="registration-form">
             <input
                 type="text"
                 placeholder="Name"
@@ -25,6 +25,7 @@ const RegistrationForm: React.FC = () => {
                 onChange={(e) => setName(e.target.value)}
                 required
                 className={styles.input}
+                data-testid="name-input"
             />
             <input
                 type="email"
@@ -33,6 +34,7 @@ const RegistrationForm: React.FC = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className={styles.input}
+                data-testid="email-input"
             />
             <input
                 type="password"
@@ -41,9 +43,10 @@ const RegistrationForm: React.FC = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 className={styles.input}
+                data-testid="password-input"
             />
-            <a href="/login">I already have an account, want to login</a>
-            <button type="submit" className={styles.btn}>Register</button>
+            <a href="/login" data-testid="login-link">I already have an account, want to login</a>
+            <button type="submit" className={styles.btn} data-testid="register-button">Register</button>
         </form>
     );
 };

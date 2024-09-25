@@ -5,7 +5,9 @@ import UserRequestPreview from "../../components/user-requests-preview/UserReque
 const UserRequest: React.FC = () => {
     return (
         <DashboardLayout title="Your Requests">
-            <UserRequestPreview />
+            <div data-testid="users-requests-page">
+                <UserRequestPreview />
+            </div>
         </DashboardLayout>
     );
 };

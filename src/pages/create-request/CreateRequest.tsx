@@ -5,7 +5,9 @@ import RequestTypeForm from "../../components/request-type-form/RequestTypeForm"
 const CreateRequest: FC = () => {
     return (
         <DashboardLayout title="Create Request">
-            <RequestTypeForm/>
+            <div data-testid="request-type-form-page">
+                <RequestTypeForm/>
+            </div>
         </DashboardLayout>
     );
 };

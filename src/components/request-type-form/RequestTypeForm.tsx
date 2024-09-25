@@ -7,9 +7,9 @@ const RequestTypeForm: React.FC = () => {
     const { id } = useParams<{ id: string }>();
 
     return (
-        <div className={styles.requestTypeForm}>
-            <h1 className={styles.title}>Choose Type of Request</h1>
-            <div className={styles.buttonGroup}>
+        <div className={styles.requestTypeForm} data-testid="request-type-form">
+            <h1 className={styles.title} data-testid="title">Choose Type of Request</h1>
+            <div className={styles.buttonGroup} data-testid="button-group">
                 <button
                     className={styles.button}
                     onClick={() => navigate(`/${id}/create/deliver`)}

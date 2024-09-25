@@ -7,8 +7,10 @@ const Home: React.FC = () => {
 
     return (
         <DashboardLayout title="Home">
-            <h1 className="text-2xl font-bold text-cyan-900">Welcome to your account, {currentUser?.name}</h1>
-            <p className="text-1xl  text-cyan-700">Use the sidebar to navigate through your options.</p>
+            <div data-testid="home-page">
+                <h1 className="text-2xl font-bold text-cyan-900">Welcome to your account, {currentUser?.name}</h1>
+                <p className="text-1xl  text-cyan-700">Use the sidebar to navigate through your options.</p>
+            </div>
         </DashboardLayout>
     );
 };
